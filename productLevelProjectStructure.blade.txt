@@ -1,0 +1,89 @@
+# Product Module - Laravel Production Level Project Structure #
+
+# Gmail App Password =  hgel jnyf rkne qosi #
+
+app/
+├── Http/
+│   ├── Controllers/
+│   │   └── admin/
+│   │       └── Module/
+│   │           └── ProductController.php          // Main CRUD controller
+│   ├── Requests/
+│   │   └── StoreProductRequest.php                // Form validation rules
+│   │   └── UpdateProductRequest.php               // Update validation rules
+│   └── Resources/
+│       └── ProductResource.php                    // API response transformation
+│
+├── Models/
+│   └── admin/
+│       └── Module/
+│           └── Product.php                        // Product model with relationships
+│
+├── Services/
+│   └── ProductService.php                         // Business logic layer
+│
+├── Repositories/
+│   ├── Contracts/
+│   │   └── ProductRepositoryInterface.php         // Contract/Interface
+│   └── ProductRepository.php                      // Data access layer
+│
+├── Observers/
+│   └── ProductObserver.php                        // Listen to model events
+│
+├── Jobs/
+│   └── ProcessProductImage.php                    // Async job for image processing
+│
+├── Events/
+│   ├── ProductCreated.php
+│   ├── ProductUpdated.php
+│   └── ProductDeleted.php
+│
+├── Listeners/
+│   ├── SendProductNotification.php
+│   └── LogProductActivity.php
+│
+├── Policies/
+│   └── ProductPolicy.php                          // Authorization rules
+│
+└── Traits/
+    └── HasProductFilters.php                      // Reusable filter logic
+
+database/
+├── migrations/
+│   └── XXXX_XX_XX_XXXXXX_create_products_table.php
+│
+└── seeders/
+    └── ProductSeeder.php
+
+resources/
+├── views/
+│   └── admin/
+│       └── module/
+│           └── product/
+│               ├── index.blade.php                 // List products (DataTable)
+│               ├── create.blade.php                // Create form
+│               ├── edit.blade.php                  // Edit form
+│               ├── show.blade.php                  // View single product
+│               └── components/
+│                   ├── form.blade.php              // Reusable form
+│                   └── table.blade.php             // Reusable table
+│
+└── js/
+    └── admin/
+        └── modules/
+            └── product.js                          // Product module JS
+
+routes/
+├── web.php                                        // Web routes
+├── api.php                                        // API routes (if needed)
+└── admin.php                                      // Admin-specific routes
+
+config/
+└── product.php                                    // Module-specific config
+
+tests/
+├── Feature/
+│   └── ProductTest.php
+└── Unit/
+    ├── ProductServiceTest.php
+    └── ProductRepositoryTest.php
