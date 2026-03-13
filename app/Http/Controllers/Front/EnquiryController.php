@@ -14,46 +14,55 @@ use Config;
 class EnquiryController extends Controller
 {
 
-    // public function index(Request $request)
-    // {
+    public function index(Request $request)
+    {
 
-    //     if ($request->ajax()) {
+        if ($request->ajax()) {
 
-    //         $query = CustomerRreview::all();
-    //         return Datatables::of($query)
-    //             ->addIndexColumn()
-    //             ->editColumn('status', function ($data) use ($request) {
+            $query = Enquiry::all();
+            return Datatables::of($query)
+                ->addIndexColumn()
+                ->editColumn('is_connected', function ($data) use ($request) {
 
-    //                 return $data->status ? 'Publish' : 'In Active';
-    //             })
-    //             ->editColumn('image', function ($data) use ($request) {
+                    $connectedUrl = route('admin.update.connected', $data->id);
 
-    //                 $image = '';
+                    if ($data->is_connected) {
+                        return '<span data-url="' . $connectedUrl . '" data-id="' . $data->id . '" class="badge bg-label-success update-record pointer" style="cursor: pointer"><i class="ti ti-check me-1"></i> Connected</span>';
+                    } else {
+                        return '<span data-url="' . $connectedUrl . '" data-id="' . $data->id . '" class="badge bg-label-warning update-record" style="cursor: pointer"><i class="ti ti-clock me-1"></i> Pending</span>';
+                    }
+                })
+                ->editColumn('email', function ($data) use ($request) {
 
-    //                 $img = asset('sofaseller/website/review/' . $data->image);
+                    return $data->email ? $data->email : 'N/A';
+                })
+                ->rawColumns(['is_connected', 'email'])
+                ->make(true);
+        }
 
-    //                 $image .= '<div class="avatar-list text-center"><span class="avatar d-block avatar-xl rounded bradius cover-image" style="background: url(' . $img . ') center center; background-size: cover;"></span></div>';
+        return view('admin.website.enquiry.index');
+    }
 
-    //                 return $image;
-    //             })
-    //             ->editColumn('action', function ($data) use ($request) {
-    //                 $deleteUrl = route('admin.delete.review', $data->id);
-    //                 $buttons = '';
-    //                 $buttons .= '<a href="javascript:;" data-url="' . $deleteUrl . '" data-id="' . $data->id . '" id="delete-record" class="text-danger delete-record"><i class="ti ti-trash ti-md"></i></a>';
-    //                 return $buttons;
-    //             })
-    //             ->rawColumns(['action', 'status', 'image'])
-    //             ->make(true);
-    //     }
 
-    //     return view('admin.website.customer_review.index');
-    // }
+    public function updateConnected(Request $request, Enquiry $enquiry)
+    {
+        $enquiry->is_connected = !$enquiry->is_connected;
+        $isSave = $enquiry->save();
+
+        if ($isSave) {
+            return  response()->json([
+                "status" => true,
+                "message" => $enquiry->is_connected ? "Enquiry set connected successfully!" : "Enquiry set pendding connection successfully!",
+            ]);
+        } else {
+        }
+    }
 
 
     public function saveRecord(Request $request)
     {
 
-    // dd($request->all());
+        // dd($request->all());
         $enquiry = new Enquiry();
         $request->validate([
             'name' => 'required',
@@ -82,36 +91,4 @@ class EnquiryController extends Controller
             'message' => 'Enquiry Send Successfully. We will connect you soon!'
         ]);
     }
-
-
-    // public function deleteCategory($id)
-    // {
-
-    //     $data = CustomerRreview::find($id);
-
-    //     if (!$data) {
-    //         return response()->json([
-    //             'error' => true,
-    //             'message' => 'Review not found!',
-    //         ]);
-    //     }
-
-    //     if (!empty($data->image) && file_exists(public_path('sofaseller/website/review/' . $data->image))) {
-    //         unlink(public_path('sofaseller/website/review/' . $data->image));
-    //     }
-
-    //     $isDelete = $data->delete();
-
-    //     if (!$isDelete) {
-    //         return response()->json([
-    //             'error' => true,
-    //             'message' => 'Something went wrong, Please try again later!',
-    //         ]);
-    //     }
-
-    //     return response()->json([
-    //         'success' => true,
-    //         'message' => 'Record Deleted Successfully!',
-    //     ]);
-    // }
 }

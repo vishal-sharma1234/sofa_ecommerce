@@ -109,6 +109,13 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::any('/reviews', [App\Http\Controllers\Front\CustomerReviewController::class, 'index'])->name('reviews');
     Route::any('/delete-review/{id}', [App\Http\Controllers\Front\CustomerReviewController::class, 'deleteRecord'])->name('delete.review');
 
+    /* 3. Customer Enquiry */
+    Route::any('/enquiries', [App\Http\Controllers\Front\EnquiryController::class, 'index'])->name('enquiries');
+    Route::any('/update-connected/{enquiry}', [App\Http\Controllers\Front\EnquiryController::class, 'updateConnected'])->name('update.connected');
+    
+    /* 3. Subscribers */
+    Route::any('/subscribers', [Website\SubscribeController::class, 'index'])->name('subscribers');
+
     /*----------🌏︎ Start Website Routes-------------*/
 
     /*----------🗂 Start Collection Routes-------------*/
@@ -129,6 +136,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::any('/product-subcategories', [ProductCollection\SubCategoryController::class, 'index'])->name('product.subcategories');
     Route::any('/add-update-product-subcategory/{id?}', [ProductCollection\SubCategoryController::class, 'saveRecord'])->name('add.update.product.subcategory');
     Route::any('/delete-product-subcategory/{id}', [ProductCollection\SubCategoryController::class, 'deleteRecord'])->name('delete.product.subcategory');
+
+
 
     /*----------🗂 End Collection Routes-------------*/
 

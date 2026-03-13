@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\admin\Module\Color;
-use App\Models\front\CustomerRreview;
+use App\Models\Color;
+use App\Models\CustomerRreview;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model

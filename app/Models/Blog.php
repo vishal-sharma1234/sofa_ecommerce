@@ -8,6 +8,12 @@ use App\Models\Comment;
 class Blog extends Model
 {
 
+    protected $guarded = [];
+
+    protected $casts = [
+        'meta_keywords' => 'array',
+    ];
+
     public function category()
     {
         return $this->belongsTo(BlogCategory::class);

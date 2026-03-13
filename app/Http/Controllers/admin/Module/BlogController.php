@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin\Module;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\{Comment, Color, BlogCategory, Blog};
+use App\Models\{Comment, BlogCategory, Blog};
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
@@ -89,12 +89,18 @@ class BlogController extends Controller
 
             $request->validate($rules, $messages);
 
+            // dd($request->all());
+
             // 3️⃣ Assign basic fields
             $blog->title              = $request->title;
             $blog->sub_title              = $request->sub_title;
             $blog->slug              = Str::slug($request->title);
             $blog->category_id       = $request->category_id;
             $blog->description       = $request->description;
+            $blog->short_description       = $request->short_description;
+            $blog->meta_title       = $request->meta_title;
+            $blog->meta_keywords = collect(json_decode($request->meta_keywords ?? '[]'))->pluck('value');
+            $blog->meta_description       = $request->meta_description;
             $blog->status            = $request->status;
 
             $blog->save();

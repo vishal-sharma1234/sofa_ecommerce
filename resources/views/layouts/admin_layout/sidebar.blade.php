@@ -33,9 +33,23 @@
         </li>
 
         <li class="menu-item">
+            <a href="{{ route('admin.enquiries') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-phone"></i>
+                <div data-i18n="Enquiries">Enquiries</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
             <a href="{{ route('admin.users') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-users"></i>
                 <div data-i18n="Profile">Customers</div>
+            </a>
+        </li>
+
+        <li class="menu-item">
+            <a href="{{ route('admin.subscribers') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Subscribers">Subscribers</div>
             </a>
         </li>
 

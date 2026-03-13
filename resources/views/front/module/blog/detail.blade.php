@@ -80,8 +80,17 @@
                                     <div class="group-sm group-justify">
                                         <div>
                                             <div class="group-sm group-tags">
-                                                <a class="link-tag" href="#">News</a><a class="link-tag"
-                                                    href="#">Interior</a><a class="link-tag" href="#">Tips</a>
+                                                @if (!empty($blog->meta_keywords))
+
+                                                    @foreach ($blog->meta_keywords ?? [] as $keyword)
+                                                        {{-- <span class="badge bg-info">{{ $keyword }}</span> --}}
+                                                        <a class="link-tag" href="#">{{ $keyword }}</a>
+                                                    @endforeach
+                                                @else
+                                                    <a class="link-tag" href="#">News</a><a class="link-tag"
+                                                        href="#">Interior</a><a class="link-tag"
+                                                        href="#">Tips</a>
+                                                @endif
                                             </div>
                                         </div>
                                         <div>

@@ -2,7 +2,7 @@
 @extends('layouts.front.master')
 @section('content')
     <section class="breadcrumbs-custom">
-        <div class="parallax-container" data-parallax-img="{{asset('images/bg-blog-2.jpg')}}">
+        <div class="parallax-container" data-parallax-img="{{ asset('images/bg-blog-2.jpg') }}">
             <div class="breadcrumbs-custom-body parallax-content context-dark">
                 <div class="container">
                     <h2 class="breadcrumbs-custom-title">Blogs</h2>
@@ -40,8 +40,7 @@
                                         <a href="{{ route('front.blog.detail', $blog->slug) }}">{{ $blog->title ?? '' }}</a>
                                     </h5>
                                     <p class="post-classic-text">
-                                        Est velox nuptia, cesaris. Est dexter turpis, cesaris. Cum
-                                        nixus persuadere, omnes fluctuies promissio flavum
+                                        {{ $blog->short_description ?? '' }}
                                     </p>
                                 </div>
                             </article>
@@ -69,7 +68,7 @@
                         </li>
                     </ul>
                 </nav> --}}
-                            {{ $blogs->links('front.pagination') }}
+                {{ $blogs->links('front.pagination') }}
 
             </div>
         </div>

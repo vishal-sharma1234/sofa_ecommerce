@@ -90,10 +90,13 @@
                                                     </div>
 
                                                     <div class="col-md-12 mb-3">
-                                                        <label for="" class="form-label">Meta Keywords</label>
+                                                        <label class="form-label">Meta Keywords</label>
+
                                                         <input id="TagifyBasic" class="form-control" name="meta_keywords"
-                                                            value="{{ old('tags', $blog->meta_keywords ?? '') }}"
-                                                            placeholder="Type something then press enter key. ">
+                                                            value='@json(old(
+                                                                    'meta_keywords',
+                                                                    isset($blog->meta_keywords) ? collect($blog->meta_keywords)->map(fn($k) => ['value' => $k]) : []))'
+                                                            placeholder="Type something then press enter key">
                                                     </div>
 
                                                     <div class="col-md-12 mb-3">

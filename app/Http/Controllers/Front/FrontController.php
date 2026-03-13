@@ -189,4 +189,5 @@ class FrontController extends Controller
             'message' => 'Subscribed Successfully!'
         ]);
     }
+
 }
