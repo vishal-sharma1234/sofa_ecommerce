@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin\Module;
 
 use App\Http\Controllers\Controller;
-use App\Models\admin\Module\{BlogCategory, Blog};
+use App\Models\{BlogCategory, Blog};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Yajra\DataTables\Facades\DataTables;

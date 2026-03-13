@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\admin\ProductCollection;
+namespace App\Models;
 
 use App\Models\admin\Module\Color;
 use App\Models\front\CustomerRreview;

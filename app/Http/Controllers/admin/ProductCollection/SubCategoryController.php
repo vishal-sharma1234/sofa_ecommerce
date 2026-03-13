@@ -4,7 +4,7 @@ namespace App\Http\Controllers\admin\ProductCollection;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\admin\ProductCollection\{SubCategory, Category};
+use App\Models\{SubCategory, Category};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Yajra\DataTables\Facades\DataTables;

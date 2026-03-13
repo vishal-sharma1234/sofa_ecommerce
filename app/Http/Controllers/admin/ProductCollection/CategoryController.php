@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\admin\ProductCollection;
 
 use App\Http\Controllers\Controller;
-use App\Models\admin\ProductCollection\{Category, Product};
+use App\Models\{Category, Product};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Yajra\DataTables\Facades\DataTables;

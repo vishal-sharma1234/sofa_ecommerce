@@ -4,11 +4,7 @@ namespace App\Http\Controllers\admin\Module;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\admin\Module\Blog;
-use App\Models\Comment;
-use App\Models\admin\Module\BlogCategory;
-use App\Models\admin\Module\Color;
-use App\Models\admin\ProductCollection\{Product, Category, SubCategory};
+use App\Models\{Comment, Color, BlogCategory, Blog};
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;

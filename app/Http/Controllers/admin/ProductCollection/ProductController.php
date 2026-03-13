@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\admin\ProductCollection;
 
 use App\Http\Controllers\Controller;
-use App\Models\admin\Module\Color;
-use App\Models\admin\ProductCollection\{Product, Category, SubCategory};
+use App\Models\{Product, Category, SubCategory, Color};
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;

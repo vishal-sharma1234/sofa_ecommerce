@@ -2,14 +2,8 @@
 
 namespace App\Http\Controllers\Front;
 
-
 use App\Http\Controllers\Controller;
-use App\Models\{AboutUs, Team, Faq};
-use App\Models\admin\Module\Blog;
-use App\Models\admin\ProductCollection\{Category, SubCategory, Product};
-use App\Models\admin\Website\Banner;
-use App\Models\front\CustomerRreview;
-use App\Models\Subscribe;
+use App\Models\{Subscribe, CustomerRreview, AboutUs, Team, Banner,  Blog, Faq, Category, SubCategory, Product};
 use Illuminate\Http\Request;
 use Darryldecode\Cart\Facades\CartFacade as Cart;
 
